@@ -11,5 +11,7 @@ export default {
         actions: 'Действия',
         edit: 'Редактировать',
         remove: 'Удалить',
+        save: 'Сохранить',
+        cancel: 'Отмена',
     },
 };

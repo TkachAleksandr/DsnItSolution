@@ -51,19 +51,35 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+
+        $status = !is_null($user) ? 200 : 204 ;
+
+        return response()->json($user, $status);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param UserAddRequest|Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserAddRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->surname = $request->input("surname");
+        $user->name = $request->input("name");
+        $user->middle_name = $request->input("middle_name");
+        $user->birthday = $request->input("birthday");
+        $user->position = $request->input("position");
+        $user->salary = $request->input("salary");
+        $user->save();
+
+        return response()->json([
+            "message" => "updateUserSuccess",
+        ], 200);
     }
 
     /**

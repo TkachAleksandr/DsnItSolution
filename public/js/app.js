@@ -13302,7 +13302,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(56);
-module.exports = __webpack_require__(163);
+module.exports = __webpack_require__(165);
 
 
 /***/ }),
@@ -13316,9 +13316,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bootstrap__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__bootstrap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__plugins_lang__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_App_vue__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__plugins_lang__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_App_vue__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_App_vue__);
 
 
@@ -47217,7 +47217,7 @@ var normalizeComponent = __webpack_require__(12)
 /* script */
 var __vue_script__ = __webpack_require__(88)
 /* template */
-var __vue_template__ = __webpack_require__(148)
+var __vue_template__ = __webpack_require__(149)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47263,9 +47263,10 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetable_2_src_components_Vuetable_vue__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetable_2_src_components_Vuetable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuetable_2_src_components_Vuetable_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_fields_users__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_mutation_type__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuetable_2_src_components_Vuetable_vue__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuetable_2_src_components_Vuetable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vuetable_2_src_components_Vuetable_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_fields_users__ = __webpack_require__(148);
 
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -47346,27 +47347,102 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mixins: [__WEBPACK_IMPORTED_MODULE_2__mixins_fields_users__["a" /* default */]],
+    mixins: [__WEBPACK_IMPORTED_MODULE_3__mixins_fields_users__["a" /* default */]],
     components: {
-        Vuetable: __WEBPACK_IMPORTED_MODULE_1_vuetable_2_src_components_Vuetable_vue___default.a
+        Vuetable: __WEBPACK_IMPORTED_MODULE_2_vuetable_2_src_components_Vuetable_vue___default.a
     },
     data: function data() {
         return {
-            surname: 'test',
-            name: 'test',
-            middleName: 'test',
-            birthday: 'test',
-            position: 'test',
-            salary: 'test'
+            isEdit: false,
+            userId: null
         };
     },
 
+    computed: {
+        surname: {
+            get: function get() {
+                return this.$store.getters.surname;
+            },
+            set: function set(value) {
+                this.$store.commit(__WEBPACK_IMPORTED_MODULE_1__store_mutation_type__["f" /* SURNAME */], value);
+            }
+        },
+        name: {
+            get: function get() {
+                return this.$store.getters.name;
+            },
+            set: function set(value) {
+                this.$store.commit(__WEBPACK_IMPORTED_MODULE_1__store_mutation_type__["c" /* NAME */], value);
+            }
+        },
+        middleName: {
+            get: function get() {
+                return this.$store.getters.middleName;
+            },
+            set: function set(value) {
+                this.$store.commit(__WEBPACK_IMPORTED_MODULE_1__store_mutation_type__["b" /* MIDDLE_NAME */], value);
+            }
+        },
+        birthday: {
+            get: function get() {
+                return this.$store.getters.birthday;
+            },
+            set: function set(value) {
+                this.$store.commit(__WEBPACK_IMPORTED_MODULE_1__store_mutation_type__["a" /* BIRTHDAY */], value);
+            }
+        },
+        position: {
+            get: function get() {
+                return this.$store.getters.position;
+            },
+            set: function set(value) {
+                this.$store.commit(__WEBPACK_IMPORTED_MODULE_1__store_mutation_type__["d" /* POSITION */], value);
+            }
+        },
+        salary: {
+            get: function get() {
+                return this.$store.getters.salary;
+            },
+            set: function set(value) {
+                this.$store.commit(__WEBPACK_IMPORTED_MODULE_1__store_mutation_type__["e" /* SALARY */], value);
+            }
+        }
+    },
     methods: {
+        cancelEdit: function cancelEdit() {
+            this.switchIsEdit();
+            this.clearFormUser();
+        },
+        switchIsEdit: function switchIsEdit() {
+            this.isEdit = !this.isEdit;
+        },
+        clearFormUser: function clearFormUser() {
+            this.surname = '';
+            this.name = '';
+            this.middleName = '';
+            this.birthday = '';
+            this.position = '';
+            this.salary = '';
+            this.userId = null;
+        },
         addNewUser: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
@@ -47410,6 +47486,87 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             }
 
             return addNewUser;
+        }(),
+        getUser: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2(id) {
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.prev = 0;
+                                _context2.next = 3;
+                                return this.$store.dispatch('getUser', id);
+
+                            case 3:
+                                this.switchIsEdit();
+                                this.userId = id;
+                                _context2.next = 10;
+                                break;
+
+                            case 7:
+                                _context2.prev = 7;
+                                _context2.t0 = _context2['catch'](0);
+
+                                console.log(_context2.t0);
+
+                            case 10:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this, [[0, 7]]);
+            }));
+
+            function getUser(_x) {
+                return _ref2.apply(this, arguments);
+            }
+
+            return getUser;
+        }(),
+        saveEditUser: function () {
+            var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                _context3.prev = 0;
+                                _context3.next = 3;
+                                return this.$store.dispatch('saveEditUser', {
+                                    id: this.userId,
+                                    data: {
+                                        surname: this.surname,
+                                        name: this.name,
+                                        middle_name: this.middleName,
+                                        birthday: this.birthday,
+                                        position: this.position,
+                                        salary: this.salary
+                                    }
+                                });
+
+                            case 3:
+                                this.$refs.userList.refresh();
+                                _context3.next = 9;
+                                break;
+
+                            case 6:
+                                _context3.prev = 6;
+                                _context3.t0 = _context3['catch'](0);
+
+                                console.log(_context3.t0);
+
+                            case 9:
+                            case 'end':
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, this, [[0, 6]]);
+            }));
+
+            function saveEditUser() {
+                return _ref3.apply(this, arguments);
+            }
+
+            return saveEditUser;
         }()
     }
 });
@@ -52181,6 +52338,54 @@ if (false) {
 
 /***/ }),
 /* 148 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            fields: [{
+                name: 'surname',
+                sortField: 'surname',
+                title: this.$t('translation.surname'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'name',
+                sortField: 'name',
+                title: this.$t('translation.name'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'middle_name',
+                sortField: 'middle_name',
+                title: this.$t('translation.middleName'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'birthday',
+                sortField: 'birthday',
+                title: this.$t('translation.birthday'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }, {
+                name: 'salary',
+                sortField: 'salary',
+                title: this.$t('translation.salary'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }, {
+                name: '__slot:actions',
+                title: this.$t('translation.actions'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }]
+        };
+    }
+});
+
+/***/ }),
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52195,191 +52400,232 @@ var render = function() {
             _vm._v(" " + _vm._s(_vm.$t("translation.addNewUserTitle")) + " ")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "surname" } }, [
-                _vm._v(" " + _vm._s(_vm.$t("translation.surname")) + " ")
+          _c(
+            "div",
+            { staticClass: "panel-body" },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "surname" } }, [
+                  _vm._v(" " + _vm._s(_vm.$t("translation.surname")) + " ")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.surname,
+                      expression: "surname"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "surname" },
+                  domProps: { value: _vm.surname },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.surname = $event.target.value
+                    }
+                  }
+                })
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.surname,
-                    expression: "surname"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "surname" },
-                domProps: { value: _vm.surname },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "name" } }, [
+                  _vm._v(" " + _vm._s(_vm.$t("translation.name")) + " ")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
                     }
-                    _vm.surname = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "name" },
+                  domProps: { value: _vm.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
+                    }
                   }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "name" } }, [
-                _vm._v(" " + _vm._s(_vm.$t("translation.name")) + " ")
+                })
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.name,
-                    expression: "name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "name" },
-                domProps: { value: _vm.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "middle_name" } }, [
+                  _vm._v(" " + _vm._s(_vm.$t("translation.middleName")) + " ")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.middleName,
+                      expression: "middleName"
                     }
-                    _vm.name = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "middle_name" },
+                  domProps: { value: _vm.middleName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.middleName = $event.target.value
+                    }
                   }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "middle_name" } }, [
-                _vm._v(" " + _vm._s(_vm.$t("translation.middleName")) + " ")
+                })
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.middleName,
-                    expression: "middleName"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "middle_name" },
-                domProps: { value: _vm.middleName },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "birthday" } }, [
+                  _vm._v(" " + _vm._s(_vm.$t("translation.birthday")) + " ")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.birthday,
+                      expression: "birthday"
                     }
-                    _vm.middleName = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "birthday" },
+                  domProps: { value: _vm.birthday },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.birthday = $event.target.value
+                    }
                   }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "birthday" } }, [
-                _vm._v(" " + _vm._s(_vm.$t("translation.birthday")) + " ")
+                })
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.birthday,
-                    expression: "birthday"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "birthday" },
-                domProps: { value: _vm.birthday },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "position" } }, [
+                  _vm._v(" " + _vm._s(_vm.$t("translation.position")) + " ")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.position,
+                      expression: "position"
                     }
-                    _vm.birthday = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "position" },
+                  domProps: { value: _vm.position },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.position = $event.target.value
+                    }
                   }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "position" } }, [
-                _vm._v(" " + _vm._s(_vm.$t("translation.position")) + " ")
+                })
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.position,
-                    expression: "position"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "position" },
-                domProps: { value: _vm.position },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "salary" } }, [
+                  _vm._v(" " + _vm._s(_vm.$t("translation.salary")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.salary,
+                      expression: "salary"
                     }
-                    _vm.position = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "salary" },
+                  domProps: { value: _vm.salary },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.salary = $event.target.value
+                    }
                   }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "salary" } }, [
-                _vm._v(" " + _vm._s(_vm.$t("translation.salary")))
+                })
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.salary,
-                    expression: "salary"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "salary" },
-                domProps: { value: _vm.salary },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.salary = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-sm btn-primary pull-right",
-                attrs: { type: "button" },
-                on: { click: _vm.addNewUser }
-              },
-              [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.$t("translation.addNewUser")) +
-                    "\n                    "
-                )
-              ]
-            )
-          ])
+              !_vm.isEdit
+                ? [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-primary pull-right",
+                        attrs: { type: "button" },
+                        on: { click: _vm.addNewUser }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.$t("translation.addNewUser")) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ]
+                : [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-success pull-right",
+                        attrs: { type: "button" },
+                        on: { click: _vm.saveEditUser }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.$t("translation.save")) +
+                            "\n                        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-primary pull-left",
+                        attrs: { type: "button" },
+                        on: { click: _vm.cancelEdit }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.$t("translation.cancel")) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ]
+            ],
+            2
+          )
         ])
       ])
     ]),
@@ -52410,6 +52656,11 @@ var render = function() {
                         attrs: {
                           type: "button",
                           title: _vm.$t("translation.edit")
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.getUser(props.rowData.id)
+                          }
                         }
                       },
                       [
@@ -52453,14 +52704,14 @@ if (false) {
 }
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_user__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_user__ = __webpack_require__(152);
 
 
 
@@ -52475,7 +52726,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 }));
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53420,14 +53671,14 @@ var index_esm = {
 
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mutations__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__state__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mutations__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__state__ = __webpack_require__(158);
 
 
 
@@ -53441,19 +53692,23 @@ var index_esm = {
 });
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export addNewUser */
+/* unused harmony export getUser */
+/* unused harmony export saveEditUser */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_user__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_user__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mutation_type__ = __webpack_require__(157);
 
 
 var _this = this;
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 
 
 
@@ -53493,12 +53748,96 @@ var addNewUser = function () {
     };
 }();
 
+var getUser = function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2(_ref2, payload) {
+        var commit = _ref2.commit;
+        var json;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+                switch (_context2.prev = _context2.next) {
+                    case 0:
+                        _context2.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_1__api_user__["a" /* default */].getUser(payload);
+
+                    case 2:
+                        json = _context2.sent;
+
+                        if (!(json.status === 200)) {
+                            _context2.next = 11;
+                            break;
+                        }
+
+                        commit(__WEBPACK_IMPORTED_MODULE_2__mutation_type__["f" /* SURNAME */], json.data.surname);
+                        commit(__WEBPACK_IMPORTED_MODULE_2__mutation_type__["c" /* NAME */], json.data.name);
+                        commit(__WEBPACK_IMPORTED_MODULE_2__mutation_type__["b" /* MIDDLE_NAME */], json.data.middle_name);
+                        commit(__WEBPACK_IMPORTED_MODULE_2__mutation_type__["a" /* BIRTHDAY */], json.data.birthday);
+                        commit(__WEBPACK_IMPORTED_MODULE_2__mutation_type__["d" /* POSITION */], json.data.position);
+                        commit(__WEBPACK_IMPORTED_MODULE_2__mutation_type__["e" /* SALARY */], json.data.salary);
+                        return _context2.abrupt('return', json);
+
+                    case 11:
+                        throw json;
+
+                    case 12:
+                    case 'end':
+                        return _context2.stop();
+                }
+            }
+        }, _callee2, _this);
+    }));
+
+    return function getUser(_x3, _x4) {
+        return _ref3.apply(this, arguments);
+    };
+}();
+
+var saveEditUser = function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3(_ref4, _ref5) {
+        var commit = _ref4.commit;
+        var id = _ref5.id,
+            data = _ref5.data;
+        var json;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+            while (1) {
+                switch (_context3.prev = _context3.next) {
+                    case 0:
+                        _context3.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_1__api_user__["a" /* default */].saveEditUser(id, data);
+
+                    case 2:
+                        json = _context3.sent;
+
+                        if (!(json.status === 200)) {
+                            _context3.next = 5;
+                            break;
+                        }
+
+                        return _context3.abrupt('return', json);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context3.stop();
+                }
+            }
+        }, _callee3, _this);
+    }));
+
+    return function saveEditUser(_x5, _x6) {
+        return _ref6.apply(this, arguments);
+    };
+}();
+
 /* harmony default export */ __webpack_exports__["a"] = ({
-    addNewUser: addNewUser
+    addNewUser: addNewUser,
+    getUser: getUser,
+    saveEditUser: saveEditUser
 });
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53521,7 +53860,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
                         case 2:
                             json = _context.sent;
-                            return _context.abrupt('return', json.data);
+                            return _context.abrupt('return', json);
 
                         case 4:
                         case 'end':
@@ -53536,39 +53875,158 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         }
 
         return addNewUser;
+    }(),
+    getUser: function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2(id) {
+            var json;
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                while (1) {
+                    switch (_context2.prev = _context2.next) {
+                        case 0:
+                            _context2.next = 2;
+                            return window.axios.get('/api/user/' + id);
+
+                        case 2:
+                            json = _context2.sent;
+                            return _context2.abrupt('return', json);
+
+                        case 4:
+                        case 'end':
+                            return _context2.stop();
+                    }
+                }
+            }, _callee2, this);
+        }));
+
+        function getUser(_x2) {
+            return _ref2.apply(this, arguments);
+        }
+
+        return getUser;
+    }(),
+    saveEditUser: function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3(id, params) {
+            var json;
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+                while (1) {
+                    switch (_context3.prev = _context3.next) {
+                        case 0:
+                            _context3.next = 2;
+                            return window.axios.put('/api/user/' + id, params);
+
+                        case 2:
+                            json = _context3.sent;
+                            return _context3.abrupt('return', json);
+
+                        case 4:
+                        case 'end':
+                            return _context3.stop();
+                    }
+                }
+            }, _callee3, this);
+        }));
+
+        function saveEditUser(_x3, _x4) {
+            return _ref3.apply(this, arguments);
+        }
+
+        return saveEditUser;
     }()
 });
-
-/***/ }),
-/* 154 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({});
 
 /***/ }),
 /* 155 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({});
+/* harmony default export */ __webpack_exports__["a"] = ({
+    surname: function surname(state) {
+        return state.surname;
+    },
+    name: function name(state) {
+        return state.name;
+    },
+    middleName: function middleName(state) {
+        return state.middleName;
+    },
+    birthday: function birthday(state) {
+        return state.birthday;
+    },
+    position: function position(state) {
+        return state.position;
+    },
+    salary: function salary(state) {
+        return state.salary;
+    }
+});
 
 /***/ }),
 /* 156 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({});
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mutation_type__ = __webpack_require__(157);
+var _types$SURNAME$types$;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = (_types$SURNAME$types$ = {}, _defineProperty(_types$SURNAME$types$, __WEBPACK_IMPORTED_MODULE_0__mutation_type__["f" /* SURNAME */], function (state, payload) {
+    state.surname = payload;
+}), _defineProperty(_types$SURNAME$types$, __WEBPACK_IMPORTED_MODULE_0__mutation_type__["c" /* NAME */], function (state, payload) {
+    state.name = payload;
+}), _defineProperty(_types$SURNAME$types$, __WEBPACK_IMPORTED_MODULE_0__mutation_type__["b" /* MIDDLE_NAME */], function (state, payload) {
+    state.middleName = payload;
+}), _defineProperty(_types$SURNAME$types$, __WEBPACK_IMPORTED_MODULE_0__mutation_type__["a" /* BIRTHDAY */], function (state, payload) {
+    state.birthday = payload;
+}), _defineProperty(_types$SURNAME$types$, __WEBPACK_IMPORTED_MODULE_0__mutation_type__["d" /* POSITION */], function (state, payload) {
+    state.position = payload;
+}), _defineProperty(_types$SURNAME$types$, __WEBPACK_IMPORTED_MODULE_0__mutation_type__["e" /* SALARY */], function (state, payload) {
+    state.salary = payload;
+}), _types$SURNAME$types$);
 
 /***/ }),
 /* 157 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return SURNAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MIDDLE_NAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BIRTHDAY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return POSITION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return SALARY; });
+var SURNAME = 'SURNAME';
+var NAME = 'NAME';
+var MIDDLE_NAME = 'MIDDLE_NAME';
+var BIRTHDAY = 'BIRTHDAY';
+var POSITION = 'POSITION';
+var SALARY = 'SALARY';
+
+/***/ }),
+/* 158 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    surname: '',
+    name: '',
+    middleName: '',
+    birthday: '',
+    position: '',
+    salary: ''
+});
+
+/***/ }),
+/* 159 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_i18n__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lang_ua_ua__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_i18n__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lang_ua_ua__ = __webpack_require__(161);
 
 
 
@@ -53584,7 +54042,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 }));
 
 /***/ }),
-/* 158 */
+/* 160 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55188,7 +55646,7 @@ VueI18n.version = '7.8.0';
 
 
 /***/ }),
-/* 159 */
+/* 161 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55204,20 +55662,22 @@ VueI18n.version = '7.8.0';
         addNewUser: 'Добавить',
         actions: 'Действия',
         edit: 'Редактировать',
-        remove: 'Удалить'
+        remove: 'Удалить',
+        save: 'Сохранить',
+        cancel: 'Отмена'
     }
 });
 
 /***/ }),
-/* 160 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(12)
 /* script */
-var __vue_script__ = __webpack_require__(161)
+var __vue_script__ = __webpack_require__(163)
 /* template */
-var __vue_template__ = __webpack_require__(162)
+var __vue_template__ = __webpack_require__(164)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55256,7 +55716,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 161 */
+/* 163 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55273,7 +55733,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 162 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55305,67 +55765,10 @@ if (false) {
 }
 
 /***/ }),
-/* 163 */
+/* 165 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 164 */,
-/* 165 */,
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    data: function data() {
-        return {
-            fields: [{
-                name: 'surname',
-                sortField: 'surname',
-                title: this.$t('translation.surname'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: 'name',
-                sortField: 'name',
-                title: this.$t('translation.name'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: 'middle_name',
-                sortField: 'middle_name',
-                title: this.$t('translation.middleName'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: 'birthday',
-                sortField: 'birthday',
-                title: this.$t('translation.birthday'),
-                titleClass: 'text-center',
-                dataClass: 'text-center'
-            }, {
-                name: 'salary',
-                sortField: 'salary',
-                title: this.$t('translation.salary'),
-                titleClass: 'text-center',
-                dataClass: 'text-center'
-            }, {
-                name: '__slot:actions',
-                title: this.$t('translation.actions'),
-                titleClass: 'text-center',
-                dataClass: 'text-center'
-            }]
-        };
-    }
-});
 
 /***/ })
 /******/ ]);

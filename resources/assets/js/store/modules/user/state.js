@@ -1,3 +1,8 @@
-export default {
-
+export default{
+    surname: '',
+    name: '',
+    middleName: '',
+    birthday: '',
+    position: '',
+    salary: '',
 };
