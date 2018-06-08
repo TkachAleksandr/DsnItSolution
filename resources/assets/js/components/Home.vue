@@ -50,13 +50,23 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <vuetable ref="users"
+                <vuetable ref="userList"
                           api-url="/api/user"
                           :fields="fields"
                           pagination-path=""
-                          data-path="data.data"
+                          data-path="data"
                           detail-row-component="my-detail-row"
                 >
+                    <template slot="actions" slot-scope="props">
+                        <button type="button" class="btn btn-md"
+                           :title="$t('translation.edit')">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btn btn-md"
+                                :title="$t('translation.remove')">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </template>
                 </vuetable>
             </div>
         </div>
@@ -98,6 +108,7 @@
                             salary: this.salary,
                         }
                     });
+                    this.$refs.userList.refresh();
                 } catch (e) {
                     console.log(e);
                 }

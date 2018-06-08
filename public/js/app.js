@@ -47336,6 +47336,16 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -47377,21 +47387,22 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 });
 
                             case 3:
-                                _context.next = 8;
+                                this.$refs.userList.refresh();
+                                _context.next = 9;
                                 break;
 
-                            case 5:
-                                _context.prev = 5;
+                            case 6:
+                                _context.prev = 6;
                                 _context.t0 = _context['catch'](0);
 
                                 console.log(_context.t0);
 
-                            case 8:
+                            case 9:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this, [[0, 5]]);
+                }, _callee, this, [[0, 6]]);
             }));
 
             function addNewUser() {
@@ -52379,14 +52390,51 @@ var render = function() {
         { staticClass: "col-md-8 col-md-offset-2" },
         [
           _c("vuetable", {
-            ref: "users",
+            ref: "userList",
             attrs: {
               "api-url": "/api/user",
               fields: _vm.fields,
               "pagination-path": "",
-              "data-path": "data.data",
+              "data-path": "data",
               "detail-row-component": "my-detail-row"
-            }
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "actions",
+                fn: function(props) {
+                  return [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-md",
+                        attrs: {
+                          type: "button",
+                          title: _vm.$t("translation.edit")
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-pencil",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-md",
+                        attrs: {
+                          type: "button",
+                          title: _vm.$t("translation.remove")
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-trash-o" })]
+                    )
+                  ]
+                }
+              }
+            ])
           })
         ],
         1
@@ -55153,7 +55201,10 @@ VueI18n.version = '7.8.0';
         birthday: 'Год рождения',
         position: 'Должность',
         salary: 'Зарплата',
-        addNewUser: 'Добавить'
+        addNewUser: 'Добавить',
+        actions: 'Действия',
+        edit: 'Редактировать',
+        remove: 'Удалить'
     }
 });
 
@@ -55277,11 +55328,40 @@ if (false) {
     data: function data() {
         return {
             fields: [{
+                name: 'surname',
+                sortField: 'surname',
+                title: this.$t('translation.surname'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
                 name: 'name',
                 sortField: 'name',
                 title: this.$t('translation.name'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
+            }, {
+                name: 'middle_name',
+                sortField: 'middle_name',
+                title: this.$t('translation.middleName'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'birthday',
+                sortField: 'birthday',
+                title: this.$t('translation.birthday'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }, {
+                name: 'salary',
+                sortField: 'salary',
+                title: this.$t('translation.salary'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }, {
+                name: '__slot:actions',
+                title: this.$t('translation.actions'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
             }]
         };
     }

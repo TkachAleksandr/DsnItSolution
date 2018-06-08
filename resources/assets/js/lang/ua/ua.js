@@ -8,5 +8,8 @@ export default {
         position: 'Должность',
         salary: 'Зарплата',
         addNewUser: 'Добавить',
+        actions: 'Действия',
+        edit: 'Редактировать',
+        remove: 'Удалить',
     },
 };
