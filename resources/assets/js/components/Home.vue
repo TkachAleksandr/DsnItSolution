@@ -47,11 +47,34 @@
 
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <vuetable ref="users"
+                          api-url="/api/user"
+                          :fields="fields"
+                          pagination-path=""
+                          data-path="data.data"
+                          detail-row-component="my-detail-row"
+                >
+                </vuetable>
+            </div>
+        </div>
+
     </div>
 </template>
 
 <script>
+    import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
+    import MixinFieldsUsers from '../mixins/fields/users';
+
     export default {
+        mixins: [
+            MixinFieldsUsers,
+        ],
+        components: {
+            Vuetable,
+        },
         data() {
             return {
                 surname: 'test',
