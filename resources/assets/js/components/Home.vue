@@ -74,8 +74,8 @@
                             @click="getUser(props.rowData.id)">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
-                        <button type="button" class="btn btn-md"
-                                :title="$t('translation.remove')">
+                        <button type="button" class="btn btn-md" :title="$t('translation.remove')"
+                            @click="removeUser(props.rowData.id)">
                             <i class="fa fa-trash-o"></i>
                         </button>
                     </template>
@@ -217,6 +217,18 @@
                 } catch (e) {
                     this.$toasted.error(this.$t('translation.error')).goAway(1500);
                 }
+            },
+            async removeUser(id) {
+                const result = await this.$swal({
+                    title: this.$t('translation.areYouSure'),
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: this.$t('translation.yes'),
+                    cancelButtonColor: '#d33d33',
+                    cancelButtonText: this.$t('translation.no'),
+                });
+                console.log(id);
             },
         },
     };

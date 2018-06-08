@@ -16,5 +16,8 @@ export default {
         userAdded: 'Пользователь добавлен',
         userEdited: 'Информация обновлена',
         error: 'Ошибка',
+        areYouSure: 'Вы уверены',
+        yes: 'Да',
+        no: 'Нет',
     },
 };
