@@ -183,9 +183,10 @@
                             salary: this.salary,
                         }
                     });
+                    this.$toasted.success(this.$t('translation.userAdded')).goAway(1500);
                     this.$refs.userList.refresh();
                 } catch (e) {
-                    console.log(e);
+                    this.$toasted.error(this.$t('translation.error')).goAway(1500);
                 }
             },
             async getUser(id) {
@@ -194,7 +195,7 @@
                     this.switchIsEdit();
                     this.userId = id;
                 } catch (e) {
-                    console.log(e);
+                    this.$toasted.error(this.$t('translation.error')).goAway(1500);
                 }
             },
             async saveEditUser() {
@@ -210,9 +211,11 @@
                             salary: this.salary,
                         },
                     });
+                    this.$toasted.success(this.$t('translation.userEdited')).goAway(1500);
                     this.$refs.userList.refresh();
+                    this.cancelEdit();
                 } catch (e) {
-                    console.log(e);
+                    this.$toasted.error(this.$t('translation.error')).goAway(1500);
                 }
             },
         },
