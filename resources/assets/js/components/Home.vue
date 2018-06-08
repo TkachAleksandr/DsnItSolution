@@ -228,7 +228,16 @@
                     cancelButtonColor: '#d33d33',
                     cancelButtonText: this.$t('translation.no'),
                 });
-                console.log(id);
+                if (result.value) {
+                    try {
+                        await this.$store.dispatch('removeUser', id);
+                        this.$refs.userList.refresh();
+                        this.$toasted.success(this.$t('translation.userRemove')).goAway(1500);
+                    } catch (e) {
+                        this.$toasted.error(this.$t('translation.error')).goAway(1500);
+                    }
+                }
+                this.cancelEdit();
             },
         },
     };

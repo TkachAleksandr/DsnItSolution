@@ -47711,14 +47711,36 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                             case 2:
                                 result = _context4.sent;
 
-                                console.log(id);
+                                if (!result.value) {
+                                    _context4.next = 14;
+                                    break;
+                                }
 
-                            case 4:
+                                _context4.prev = 4;
+                                _context4.next = 7;
+                                return this.$store.dispatch('removeUser', id);
+
+                            case 7:
+                                this.$refs.userList.refresh();
+                                this.$toasted.success(this.$t('translation.userRemove')).goAway(1500);
+                                _context4.next = 14;
+                                break;
+
+                            case 11:
+                                _context4.prev = 11;
+                                _context4.t0 = _context4['catch'](4);
+
+                                this.$toasted.error(this.$t('translation.error')).goAway(1500);
+
+                            case 14:
+                                this.cancelEdit();
+
+                            case 15:
                             case 'end':
                                 return _context4.stop();
                         }
                     }
-                }, _callee4, this);
+                }, _callee4, this, [[4, 11]]);
             }));
 
             function removeUser(_x2) {
@@ -53781,6 +53803,7 @@ var index_esm = {
 /* unused harmony export addNewUser */
 /* unused harmony export getUser */
 /* unused harmony export saveEditUser */
+/* unused harmony export removeUser */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_user__ = __webpack_require__(156);
@@ -53874,10 +53897,9 @@ var getUser = function () {
 }();
 
 var saveEditUser = function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3(_ref4, _ref5) {
-        var commit = _ref4.commit;
-        var id = _ref5.id,
-            data = _ref5.data;
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3(context, _ref4) {
+        var id = _ref4.id,
+            data = _ref4.data;
         var json;
         return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
             while (1) {
@@ -53908,6 +53930,42 @@ var saveEditUser = function () {
     }));
 
     return function saveEditUser(_x5, _x6) {
+        return _ref5.apply(this, arguments);
+    };
+}();
+
+var removeUser = function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4(context, payload) {
+        var json;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+            while (1) {
+                switch (_context4.prev = _context4.next) {
+                    case 0:
+                        _context4.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_1__api_user__["a" /* default */].removeUser(payload);
+
+                    case 2:
+                        json = _context4.sent;
+
+                        if (!(json.status === 200)) {
+                            _context4.next = 5;
+                            break;
+                        }
+
+                        return _context4.abrupt('return', json);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context4.stop();
+                }
+            }
+        }, _callee4, _this);
+    }));
+
+    return function removeUser(_x7, _x8) {
         return _ref6.apply(this, arguments);
     };
 }();
@@ -53915,7 +53973,8 @@ var saveEditUser = function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
     addNewUser: addNewUser,
     getUser: getUser,
-    saveEditUser: saveEditUser
+    saveEditUser: saveEditUser,
+    removeUser: removeUser
 });
 
 /***/ }),
@@ -54013,6 +54072,34 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         }
 
         return saveEditUser;
+    }(),
+    removeUser: function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4(id) {
+            var json;
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+                while (1) {
+                    switch (_context4.prev = _context4.next) {
+                        case 0:
+                            _context4.next = 2;
+                            return window.axios.delete('/api/user/' + id);
+
+                        case 2:
+                            json = _context4.sent;
+                            return _context4.abrupt('return', json);
+
+                        case 4:
+                        case 'end':
+                            return _context4.stop();
+                    }
+                }
+            }, _callee4, this);
+        }));
+
+        function removeUser(_x5) {
+            return _ref4.apply(this, arguments);
+        }
+
+        return removeUser;
     }()
 });
 
@@ -55731,6 +55818,7 @@ VueI18n.version = '7.8.0';
         cancel: 'Отмена',
         userAdded: 'Пользователь добавлен',
         userEdited: 'Информация обновлена',
+        userRemove: 'Пользователь удален',
         error: 'Ошибка',
         areYouSure: 'Вы уверены',
         yes: 'Да',

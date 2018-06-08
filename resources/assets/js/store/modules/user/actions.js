@@ -27,8 +27,18 @@ export const getUser = async ({ commit }, payload) => {
     throw json;
 };
 
-export const saveEditUser = async ({ commit }, { id, data }) => {
+export const saveEditUser = async (context, { id, data }) => {
     const json = await user.saveEditUser(id, data);
+
+    if (json.status === 200) {
+        return json;
+    }
+
+    throw json;
+};
+
+export const removeUser = async (context, payload) => {
+    const json = await user.removeUser(payload);
 
     if (json.status === 200) {
         return json;
@@ -41,4 +51,5 @@ export default {
     addNewUser,
     getUser,
     saveEditUser,
+    removeUser,
 };

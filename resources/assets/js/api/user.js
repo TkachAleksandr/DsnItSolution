@@ -17,4 +17,10 @@ export default {
 
         return json;
     },
+
+    async removeUser(id) {
+        const json = await window.axios.delete(`/api/user/${id}`);
+
+        return json;
+    },
 };

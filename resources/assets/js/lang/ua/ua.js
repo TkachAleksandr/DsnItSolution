@@ -15,6 +15,7 @@ export default {
         cancel: 'Отмена',
         userAdded: 'Пользователь добавлен',
         userEdited: 'Информация обновлена',
+        userRemove: 'Пользователь удален',
         error: 'Ошибка',
         areYouSure: 'Вы уверены',
         yes: 'Да',
