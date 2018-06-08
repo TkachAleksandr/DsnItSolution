@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <label for="middle_name"> Отчество </label>
                             <input type="text" class="form-control" id="middle_name"
-                                   v-model="middle_name">
+                                   v-model="middleName">
                         </div>
                         <div class="form-group">
                             <label for="birthday"> Год рождения </label>
@@ -38,7 +38,10 @@
                                    v-model="salary">
                         </div>
 
-                        <button type="button" class="btn btn-sm btn-primary pull-right"> Добавить </button>
+                        <button type="button" class="btn btn-sm btn-primary pull-right"
+                                @click="addNewUser">
+                            Добавить
+                        </button>
                     </div>
                 </div>
 
@@ -51,13 +54,31 @@
     export default {
         data() {
             return {
-                surname: '',
-                name: '',
-                middle_name: '',
-                birthday: '',
-                position: '',
-                salary: '',
+                surname: 'test',
+                name: 'test',
+                middleName: 'test',
+                birthday: 'test',
+                position: 'test',
+                salary: 'test',
             };
+        },
+        methods: {
+            async addNewUser() {
+                try {
+                    await this.$store.dispatch('addNewUser', {
+                        data: {
+                            surname: this.surname,
+                            name: this.name,
+                            middle_name: this.middleName,
+                            birthday: this.birthday,
+                            position: this.position,
+                            salary: this.salary,
+                        }
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
+            },
         },
     };
 </script>
