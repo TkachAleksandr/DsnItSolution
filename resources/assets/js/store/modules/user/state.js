@@ -5,4 +5,5 @@ export default{
     birthday: '',
     position: '',
     salary: '',
+    file: null,
 };

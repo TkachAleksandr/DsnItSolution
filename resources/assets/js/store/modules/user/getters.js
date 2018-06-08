@@ -5,4 +5,5 @@ export default {
     birthday: state => state.birthday,
     position: state => state.position,
     salary: state => state.salary,
+    file: state => state.file,
 };

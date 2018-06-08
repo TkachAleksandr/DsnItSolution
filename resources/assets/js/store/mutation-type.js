@@ -4,3 +4,4 @@ export const MIDDLE_NAME = 'MIDDLE_NAME';
 export const BIRTHDAY = 'BIRTHDAY';
 export const POSITION = 'POSITION';
 export const SALARY = 'SALARY';
+export const FILE = 'FILE';

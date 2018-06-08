@@ -20,5 +20,8 @@ export default {
         areYouSure: 'Вы уверены',
         yes: 'Да',
         no: 'Нет',
+        import: 'Импорт',
+        export: 'Экспорт',
+        workWithFile: 'Работа с БД',
     },
 };

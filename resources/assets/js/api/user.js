@@ -23,4 +23,16 @@ export default {
 
         return json;
     },
+
+    async importFile(params) {
+        const { data } = await window.axios.post('/api/file', params);
+
+        return data;
+    },
+
+    async exportFile(params) {
+        const { data } = await window.axios.get('/api/file', params);
+
+        return data;
+    },
 };

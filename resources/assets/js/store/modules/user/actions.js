@@ -47,9 +47,31 @@ export const removeUser = async (context, payload) => {
     throw json;
 };
 
+export const importFile = async (context, payload) => {
+    const json = await user.importFile(payload.data);
+
+    if (json.status === 0) {
+        throw json;
+    }
+};
+
+export const exportFile = async ({ commit }) => {
+    const json = await user.exportFile();
+
+    if (json.status === 1) {
+        commit(types.FILE, json.data);
+        return json;
+    }
+    if (json.status === 0) {
+        throw json;
+    }
+};
+
 export default {
     addNewUser,
     getUser,
     saveEditUser,
     removeUser,
+    importFile,
+    exportFile,
 };

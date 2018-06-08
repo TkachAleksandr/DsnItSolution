@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"> {{ $t('translation.addNewUserTitle') }} </div>
@@ -57,11 +57,29 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading"> {{ $t('translation.workWithFile') }} </div>
+                    <div class="panel-body">
+                        <div class="col-12 form-group">
+                            <input type="file" name="file"
+                                   accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                   @change="filesChange($event.target.files)">
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-sm btn-primary pull-right"
+                                    @click="importFile">
+                                {{ $t('translation.import') }}
+                            </button>
+                            <a class="btn btn-sm btn-primary pull-left" :href="pathFile" download>
+                                {{ $t('translation.export') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            </div>
+
+            <div class="col-md-8">
                 <vuetable ref="userList"
                           api-url="/api/user"
                           :fields="fields"
@@ -90,6 +108,8 @@
     import * as types from '../store/mutation-type';
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import MixinFieldsUsers from '../mixins/fields/users';
+
+    const objectToFormData = require('object-to-formdata');
 
     export default {
         mixins: [
@@ -153,8 +173,21 @@
                     this.$store.commit(types.SALARY, value);
                 },
             },
+            pathFile() {
+                return this.$store.getters.file;
+            },
+        },
+        mounted() {
+            this.$store.dispatch('exportFile', {
+                data: objectToFormData({
+                    file: this.file,
+                }),
+            });
         },
         methods: {
+            userListTableRefresh() {
+                this.$refs.userList.refresh();
+            },
             cancelEdit() {
                 this.switchIsEdit();
                 this.clearFormUser();
@@ -184,7 +217,7 @@
                         }
                     });
                     this.$toasted.success(this.$t('translation.userAdded')).goAway(1500);
-                    this.$refs.userList.refresh();
+                    this.userListTableRefresh();
                 } catch (e) {
                     this.$toasted.error(this.$t('translation.error')).goAway(1500);
                 }
@@ -212,7 +245,7 @@
                         },
                     });
                     this.$toasted.success(this.$t('translation.userEdited')).goAway(1500);
-                    this.$refs.userList.refresh();
+                    this.userListTableRefresh();
                     this.cancelEdit();
                 } catch (e) {
                     this.$toasted.error(this.$t('translation.error')).goAway(1500);
@@ -231,13 +264,29 @@
                 if (result.value) {
                     try {
                         await this.$store.dispatch('removeUser', id);
-                        this.$refs.userList.refresh();
+                        this.userListTableRefresh();
                         this.$toasted.success(this.$t('translation.userRemove')).goAway(1500);
                     } catch (e) {
                         this.$toasted.error(this.$t('translation.error')).goAway(1500);
                     }
                 }
                 this.cancelEdit();
+            },
+            filesChange(file) {
+                this.file = file[0];
+            },
+            async importFile() {
+                try {
+                    await this.$store.dispatch('importFile', {
+                        data: objectToFormData({
+                            file: this.file,
+                        }),
+                    });
+                    this.$toasted.success(this.$t('translation.userEdited')).goAway(1500);
+                    this.userListTableRefresh();
+                } catch (e) {
+                    this.$toasted.error(this.$t('translation.error')).goAway(1500);
+                }
             },
         },
     };

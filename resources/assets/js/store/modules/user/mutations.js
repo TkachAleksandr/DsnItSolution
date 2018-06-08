@@ -19,4 +19,7 @@ export default {
     [types.SALARY](state, payload) {
         state.salary = payload;
     },
+    [types.FILE](state, payload) {
+        state.file = payload;
+    },
 };

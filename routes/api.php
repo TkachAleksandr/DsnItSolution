@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource("user", 'UserController');
+Route::post('/file', 'ParserExcelController@importFile');
+Route::get('/file', 'ParserExcelController@exportFile');
