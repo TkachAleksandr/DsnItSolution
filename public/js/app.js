@@ -46909,12 +46909,14 @@ var render = function() {
       _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
         _c("div", { staticClass: "panel panel-default" }, [
           _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(" Пользователи ")
+            _vm._v(" " + _vm._s(_vm.$t("translation.addNewUserTitle")) + " ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "surname" } }, [_vm._v(" Фамилия ")]),
+              _c("label", { attrs: { for: "surname" } }, [
+                _vm._v(" " + _vm._s(_vm.$t("translation.surname")) + " ")
+              ]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -46940,7 +46942,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "name" } }, [_vm._v(" Имя ")]),
+              _c("label", { attrs: { for: "name" } }, [
+                _vm._v(" " + _vm._s(_vm.$t("translation.name")) + " ")
+              ]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -46967,7 +46971,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "middle_name" } }, [
-                _vm._v(" Отчество ")
+                _vm._v(" " + _vm._s(_vm.$t("translation.middleName")) + " ")
               ]),
               _vm._v(" "),
               _c("input", {
@@ -46995,7 +46999,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "birthday" } }, [
-                _vm._v(" Год рождения ")
+                _vm._v(" " + _vm._s(_vm.$t("translation.birthday")) + " ")
               ]),
               _vm._v(" "),
               _c("input", {
@@ -47023,7 +47027,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "position" } }, [
-                _vm._v(" Должность ")
+                _vm._v(" " + _vm._s(_vm.$t("translation.position")) + " ")
               ]),
               _vm._v(" "),
               _c("input", {
@@ -47050,7 +47054,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "salary" } }, [_vm._v(" Зарплата ")]),
+              _c("label", { attrs: { for: "salary" } }, [
+                _vm._v(" " + _vm._s(_vm.$t("translation.salary")))
+              ]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -47084,7 +47090,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                        Добавить\n                    "
+                  "\n                        " +
+                    _vm._s(_vm.$t("translation.addNewUser")) +
+                    "\n                    "
                 )
               ]
             )
@@ -48229,6 +48237,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]({
+    locale: 'ua',
     messages: {
         ua: __WEBPACK_IMPORTED_MODULE_2__lang_ua_ua__["a" /* default */]
     }
@@ -49845,7 +49854,14 @@ VueI18n.version = '7.8.0';
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     translation: {
-        surname: 'Фамилия'
+        addNewUserTitle: 'Добавить данные о человеке',
+        surname: 'Фамилия',
+        name: 'Имя',
+        middleName: 'Отчество',
+        birthday: 'Год рождения',
+        position: 'Должность',
+        salary: 'Зарплата',
+        addNewUser: 'Добавить'
     }
 });
 
