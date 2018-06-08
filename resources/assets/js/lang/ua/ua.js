@@ -13,5 +13,8 @@ export default {
         remove: 'Удалить',
         save: 'Сохранить',
         cancel: 'Отмена',
+        userAdded: 'Пользователь добавлен',
+        userEdited: 'Информация обновлена',
+        error: 'Ошибка',
     },
 };
