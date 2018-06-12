@@ -47571,11 +47571,11 @@ var objectToFormData = __webpack_require__(151);
         }
     },
     mounted: function mounted() {
-        this.$store.dispatch('exportFile', {
-            data: objectToFormData({
-                file: this.file
-            })
-        });
+        // this.$store.dispatch('exportFile', {
+        //     data: objectToFormData({
+        //         file: this.file,
+        //     }),
+        // });
     },
 
     methods: {
@@ -47620,21 +47620,22 @@ var objectToFormData = __webpack_require__(151);
                             case 3:
                                 this.$toasted.success(this.$t('translation.userAdded')).goAway(1500);
                                 this.userListTableRefresh();
-                                _context.next = 10;
+                                this.clearFormUser();
+                                _context.next = 11;
                                 break;
 
-                            case 7:
-                                _context.prev = 7;
+                            case 8:
+                                _context.prev = 8;
                                 _context.t0 = _context['catch'](0);
 
                                 this.$toasted.error(this.$t('translation.error')).goAway(1500);
 
-                            case 10:
+                            case 11:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this, [[0, 7]]);
+                }, _callee, this, [[0, 8]]);
             }));
 
             function addNewUser() {
@@ -52655,7 +52656,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container mt" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "panel panel-default" }, [
@@ -52934,7 +52935,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "btn btn-sm btn-primary pull-left",
-                  attrs: { href: _vm.pathFile, download: "" }
+                  attrs: { href: "/file" }
                 },
                 [
                   _vm._v(
@@ -54024,7 +54025,6 @@ var index_esm = {
 /* unused harmony export saveEditUser */
 /* unused harmony export removeUser */
 /* unused harmony export importFile */
-/* unused harmony export exportFile */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_user__ = __webpack_require__(157);
@@ -54224,56 +54224,12 @@ var importFile = function () {
     };
 }();
 
-var exportFile = function () {
-    var _ref9 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee6(_ref8) {
-        var commit = _ref8.commit;
-        var json;
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee6$(_context6) {
-            while (1) {
-                switch (_context6.prev = _context6.next) {
-                    case 0:
-                        _context6.next = 2;
-                        return __WEBPACK_IMPORTED_MODULE_1__api_user__["a" /* default */].exportFile();
-
-                    case 2:
-                        json = _context6.sent;
-
-                        if (!(json.status === 1)) {
-                            _context6.next = 6;
-                            break;
-                        }
-
-                        commit(__WEBPACK_IMPORTED_MODULE_2__mutation_type__["b" /* FILE */], json.data);
-                        return _context6.abrupt('return', json);
-
-                    case 6:
-                        if (!(json.status === 0)) {
-                            _context6.next = 8;
-                            break;
-                        }
-
-                        throw json;
-
-                    case 8:
-                    case 'end':
-                        return _context6.stop();
-                }
-            }
-        }, _callee6, _this);
-    }));
-
-    return function exportFile(_x11) {
-        return _ref9.apply(this, arguments);
-    };
-}();
-
 /* harmony default export */ __webpack_exports__["a"] = ({
     addNewUser: addNewUser,
     getUser: getUser,
     saveEditUser: saveEditUser,
     removeUser: removeUser,
-    importFile: importFile,
-    exportFile: exportFile
+    importFile: importFile
 });
 
 /***/ }),
@@ -54429,36 +54385,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         }
 
         return importFile;
-    }(),
-    exportFile: function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee6(params) {
-            var _ref8, data;
-
-            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee6$(_context6) {
-                while (1) {
-                    switch (_context6.prev = _context6.next) {
-                        case 0:
-                            _context6.next = 2;
-                            return window.axios.get('/api/file', params);
-
-                        case 2:
-                            _ref8 = _context6.sent;
-                            data = _ref8.data;
-                            return _context6.abrupt('return', data);
-
-                        case 5:
-                        case 'end':
-                            return _context6.stop();
-                    }
-                }
-            }, _callee6, this);
-        }));
-
-        function exportFile(_x7) {
-            return _ref7.apply(this, arguments);
-        }
-
-        return exportFile;
     }()
 });
 

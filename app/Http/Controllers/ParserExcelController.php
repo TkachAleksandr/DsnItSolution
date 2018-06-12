@@ -47,10 +47,10 @@ class ParserExcelController extends Controller
     {
         $users = User::all();
         $newFileName = Carbon::now()->toDateString();
-        $path = 'files/';
+        $path = 'app/public/';
         $format = 'xls';
 
-        Excel::create($newFileName, function($excel) use ($users) {
+        $file = Excel::create($newFileName, function($excel) use ($users) {
             $excel->sheet('firstSheet', function($sheet) use ($users) {
 
                 $sheet->row(1, ['surname', 'name', 'middle_name', 'birthday', 'position', 'salary']);
@@ -68,15 +68,8 @@ class ParserExcelController extends Controller
                 }
 
             });
-        })->store($format, storage_path($path));
+        })->store($format, storage_path($path), true);
 
-        $file = Storage::url($path . $newFileName . "." . $format);
-
-        $data = [
-            "status" => 1,
-            "data" => $file,
-        ];
-
-        return response()->json($data);
+        return response()->download(storage_path($path . $newFileName . "." . $format));
     }
 }

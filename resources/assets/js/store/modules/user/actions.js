@@ -55,23 +55,10 @@ export const importFile = async (context, payload) => {
     }
 };
 
-export const exportFile = async ({ commit }) => {
-    const json = await user.exportFile();
-
-    if (json.status === 1) {
-        commit(types.FILE, json.data);
-        return json;
-    }
-    if (json.status === 0) {
-        throw json;
-    }
-};
-
 export default {
     addNewUser,
     getUser,
     saveEditUser,
     removeUser,
     importFile,
-    exportFile,
 };

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container mt">
         <div class="row">
             <div class="col-md-4">
 
@@ -70,7 +70,7 @@
                                     @click="importFile">
                                 {{ $t('translation.import') }}
                             </button>
-                            <a class="btn btn-sm btn-primary pull-left" :href="pathFile" download>
+                            <a class="btn btn-sm btn-primary pull-left" href="/file">
                                 {{ $t('translation.export') }}
                             </a>
                         </div>
@@ -178,11 +178,11 @@
             },
         },
         mounted() {
-            this.$store.dispatch('exportFile', {
-                data: objectToFormData({
-                    file: this.file,
-                }),
-            });
+            // this.$store.dispatch('exportFile', {
+            //     data: objectToFormData({
+            //         file: this.file,
+            //     }),
+            // });
         },
         methods: {
             userListTableRefresh() {
@@ -218,6 +218,7 @@
                     });
                     this.$toasted.success(this.$t('translation.userAdded')).goAway(1500);
                     this.userListTableRefresh();
+                    this.clearFormUser();
                 } catch (e) {
                     this.$toasted.error(this.$t('translation.error')).goAway(1500);
                 }
@@ -288,6 +289,13 @@
                     this.$toasted.error(this.$t('translation.error')).goAway(1500);
                 }
             },
+            // async exportFile() {
+            //     try {
+            //         await this.$store.dispatch('exportFile');
+            //     } catch (e) {
+            //         this.$toasted.error(this.$t('translation.error')).goAway(1500);
+            //     }
+            // },
         },
     };
 </script>

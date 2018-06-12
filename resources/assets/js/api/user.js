@@ -29,10 +29,4 @@ export default {
 
         return data;
     },
-
-    async exportFile(params) {
-        const { data } = await window.axios.get('/api/file', params);
-
-        return data;
-    },
 };
