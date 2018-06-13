@@ -54482,7 +54482,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_i18n__ = __webpack_require__(162);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lang_ua_ua__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lang_ru_ru__ = __webpack_require__(163);
 
 
 
@@ -54491,9 +54491,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]({
-    locale: 'ua',
+    locale: 'ru',
     messages: {
-        ua: __WEBPACK_IMPORTED_MODULE_2__lang_ua_ua__["a" /* default */]
+        ru: __WEBPACK_IMPORTED_MODULE_2__lang_ru_ru__["a" /* default */]
     }
 }));
 
