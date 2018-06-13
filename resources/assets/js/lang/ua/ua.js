@@ -23,5 +23,6 @@ export default {
         import: 'Импорт',
         export: 'Экспорт',
         workWithFile: 'Работа с БД',
+        selectFile: 'Пожалуйста выберите файл',
     },
 };

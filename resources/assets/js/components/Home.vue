@@ -60,7 +60,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"> {{ $t('translation.workWithFile') }} </div>
                     <div class="panel-body">
-                        <div class="col-12 form-group">
+                        <div class="col-12 form-group" :class="errorBorder ? 'errorBorder' : ''">
                             <input type="file" name="file"
                                    accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                                    @change="filesChange($event.target.files)">
@@ -122,6 +122,7 @@
             return {
                 isEdit: false,
                 userId: null,
+                errorBorder: false,
             };
         },
         computed: {
@@ -176,13 +177,6 @@
             pathFile() {
                 return this.$store.getters.file;
             },
-        },
-        mounted() {
-            // this.$store.dispatch('exportFile', {
-            //     data: objectToFormData({
-            //         file: this.file,
-            //     }),
-            // });
         },
         methods: {
             userListTableRefresh() {
@@ -275,27 +269,26 @@
             },
             filesChange(file) {
                 this.file = file[0];
+                this.errorBorder = false;
             },
             async importFile() {
-                try {
-                    await this.$store.dispatch('importFile', {
-                        data: objectToFormData({
-                            file: this.file,
-                        }),
-                    });
-                    this.$toasted.success(this.$t('translation.userEdited')).goAway(1500);
-                    this.userListTableRefresh();
-                } catch (e) {
-                    this.$toasted.error(this.$t('translation.error')).goAway(1500);
+                if (this.file !== undefined) {
+                    try {
+                        await this.$store.dispatch('importFile', {
+                            data: objectToFormData({
+                                file: this.file,
+                            }),
+                        });
+                        this.$toasted.success(this.$t('translation.userEdited')).goAway(1500);
+                        this.userListTableRefresh();
+                    } catch (e) {
+                        this.$toasted.error(this.$t('translation.error')).goAway(1500);
+                    }
+                } else {
+                    this.errorBorder = true;
+                    this.$toasted.error(this.$t('translation.selectFile')).goAway(1500);
                 }
             },
-            // async exportFile() {
-            //     try {
-            //         await this.$store.dispatch('exportFile');
-            //     } catch (e) {
-            //         this.$toasted.error(this.$t('translation.error')).goAway(1500);
-            //     }
-            // },
         },
     };
 </script>

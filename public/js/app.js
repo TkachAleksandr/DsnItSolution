@@ -47513,7 +47513,8 @@ var objectToFormData = __webpack_require__(151);
     data: function data() {
         return {
             isEdit: false,
-            userId: null
+            userId: null,
+            errorBorder: false
         };
     },
 
@@ -47570,14 +47571,6 @@ var objectToFormData = __webpack_require__(151);
             return this.$store.getters.file;
         }
     },
-    mounted: function mounted() {
-        // this.$store.dispatch('exportFile', {
-        //     data: objectToFormData({
-        //         file: this.file,
-        //     }),
-        // });
-    },
-
     methods: {
         userListTableRefresh: function userListTableRefresh() {
             this.$refs.userList.refresh();
@@ -47788,6 +47781,7 @@ var objectToFormData = __webpack_require__(151);
         }(),
         filesChange: function filesChange(file) {
             this.file = file[0];
+            this.errorBorder = false;
         },
         importFile: function () {
             var _ref5 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee5() {
@@ -47795,32 +47789,45 @@ var objectToFormData = __webpack_require__(151);
                     while (1) {
                         switch (_context5.prev = _context5.next) {
                             case 0:
-                                _context5.prev = 0;
-                                _context5.next = 3;
+                                if (!(this.file !== undefined)) {
+                                    _context5.next = 13;
+                                    break;
+                                }
+
+                                _context5.prev = 1;
+                                _context5.next = 4;
                                 return this.$store.dispatch('importFile', {
                                     data: objectToFormData({
                                         file: this.file
                                     })
                                 });
 
-                            case 3:
+                            case 4:
                                 this.$toasted.success(this.$t('translation.userEdited')).goAway(1500);
                                 this.userListTableRefresh();
-                                _context5.next = 10;
+                                _context5.next = 11;
                                 break;
 
-                            case 7:
-                                _context5.prev = 7;
-                                _context5.t0 = _context5['catch'](0);
+                            case 8:
+                                _context5.prev = 8;
+                                _context5.t0 = _context5['catch'](1);
 
                                 this.$toasted.error(this.$t('translation.error')).goAway(1500);
 
-                            case 10:
+                            case 11:
+                                _context5.next = 15;
+                                break;
+
+                            case 13:
+                                this.errorBorder = true;
+                                this.$toasted.error(this.$t('translation.selectFile')).goAway(1500);
+
+                            case 15:
                             case 'end':
                                 return _context5.stop();
                         }
                     }
-                }, _callee5, this, [[0, 7]]);
+                }, _callee5, this, [[1, 8]]);
             }));
 
             function importFile() {
@@ -52898,21 +52905,28 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [
-            _c("div", { staticClass: "col-12 form-group" }, [
-              _c("input", {
-                attrs: {
-                  type: "file",
-                  name: "file",
-                  accept:
-                    "application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                },
-                on: {
-                  change: function($event) {
-                    _vm.filesChange($event.target.files)
+            _c(
+              "div",
+              {
+                staticClass: "col-12 form-group",
+                class: _vm.errorBorder ? "errorBorder" : ""
+              },
+              [
+                _c("input", {
+                  attrs: {
+                    type: "file",
+                    name: "file",
+                    accept:
+                      "application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                  },
+                  on: {
+                    change: function($event) {
+                      _vm.filesChange($event.target.files)
+                    }
                   }
-                }
-              })
-            ]),
+                })
+              ]
+            ),
             _vm._v(" "),
             _c("div", { staticClass: "col-12" }, [
               _c(
@@ -56116,7 +56130,8 @@ VueI18n.version = '7.8.0';
         no: 'Нет',
         import: 'Импорт',
         export: 'Экспорт',
-        workWithFile: 'Работа с БД'
+        workWithFile: 'Работа с БД',
+        selectFile: 'Пожалуйста выберите файл'
     }
 });
 

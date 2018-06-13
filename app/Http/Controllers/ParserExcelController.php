@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ParserExcelController extends Controller
@@ -15,6 +14,9 @@ class ParserExcelController extends Controller
         $file = $request->file('file');
 
         if (!is_null($file)) {
+
+            User::truncate();
+
             Excel::load($file, function($reader) {
 
                 foreach ($reader->get() as $row) {
@@ -50,7 +52,7 @@ class ParserExcelController extends Controller
         $path = 'app/public/';
         $format = 'xls';
 
-        $file = Excel::create($newFileName, function($excel) use ($users) {
+        Excel::create($newFileName, function($excel) use ($users) {
             $excel->sheet('firstSheet', function($sheet) use ($users) {
 
                 $sheet->row(1, ['surname', 'name', 'middle_name', 'birthday', 'position', 'salary']);
@@ -70,6 +72,6 @@ class ParserExcelController extends Controller
             });
         })->store($format, storage_path($path), true);
 
-        return response()->download(storage_path($path . $newFileName . "." . $format));
+        return response()->download(storage_path($path . $newFileName . "." . $format))->deleteFileAfterSend(true);
     }
 }
